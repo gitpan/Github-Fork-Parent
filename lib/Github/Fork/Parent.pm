@@ -10,11 +10,11 @@ Github::Fork::Parent - Perl module to determine which repository stands in a roo
 
 =head1 VERSION
 
-Version 0.01
+Version 0.10
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.10';
 
 
 =head1 SYNOPSIS
@@ -34,13 +34,17 @@ Perhaps a little code snippet.
 
 Takes link to repository (git://, git@ or http://) and returns http link to root repository.
 
+=head2 github_parent_author
+
+Takes link to repository (git://, git@ or http://) and returns owner of root repository.
+
 =cut
 
 use YAML::Tiny 1.40;
 use LWP::UserAgent;
 
 use Exporter 'import';
-our @EXPORT = qw(github_parent);
+our @EXPORT = qw(github_parent github_parent_author);
 
 sub get_network_data {
   my ($author,$project)=@_;
@@ -75,16 +79,43 @@ sub github_parent {
   my ($author,$project)=parse_github_links($link);
   return $link unless $author;
   my $yaml_content=get_network_data($author,$project);
-  my $yaml=YAML::Tiny->read_string($yaml_content);
-  my @network=@{$yaml->[0]->{network}};
-  foreach my $fork (@network) {
-    if ($fork->{':fork'} eq 'false') {
-      return $fork->{':url'};
+  if ($yaml_content) {
+    my $yaml=YAML::Tiny->read_string($yaml_content);
+    my @network=@{$yaml->[0]->{network}};
+    foreach my $fork (@network) {
+      if ($fork->{':fork'} eq 'false') {
+        return $fork->{':url'};
+      }
     }
+    die;
+  } else {
+    die "No content";
   }
-  die;
 }
 
+sub github_parent_author {
+  #my $link=shift;
+  #my $link1=github_parent($link);
+  #my ($author,$project)=parse_github_links($link1);
+  #die "Cannot get author from '$link1'" unless $author;
+  #return $author;
+  my $link=shift;
+  my ($author,$project)=parse_github_links($link);
+  return $link unless $author;
+  my $yaml_content=get_network_data($author,$project);
+  if ($yaml_content) {
+    my $yaml=YAML::Tiny->read_string($yaml_content);
+    my @network=@{$yaml->[0]->{network}};
+    foreach my $fork (@network) {
+      if ($fork->{':fork'} eq 'false') {
+        return $fork->{':owner'};
+      }
+    }
+    die;
+  } else {
+    die "No content";
+  }
+}
 
 =head1 AUTHOR
 
