@@ -1,0 +1,53 @@
+{
+   "abstract" : "Perl module to determine which repository stands in a root of GitHub forking hierarhy.",
+   "author" : [
+      "Alexandr Ciornii <alexchorny@gmail.com>"
+   ],
+   "dynamic_config" : 1,
+   "generated_by" : "Module::Build version 0.38, CPAN::Meta::Converter version 2.110440",
+   "keywords" : [
+      "github",
+      "repository",
+      "fork"
+   ],
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Github-Fork-Parent",
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "LWP::Online" : "1.06",
+            "Test::More" : 0
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Exporter" : "5.57",
+            "LWP::UserAgent" : 0,
+            "YAML::Tiny" : "1.4",
+            "perl" : "5.006"
+         }
+      }
+   },
+   "provides" : {
+      "Github::Fork::Parent" : {
+         "file" : "lib/Github/Fork/Parent.pm",
+         "version" : "0.11"
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "license" : [
+         "http://dev.perl.org/licenses/"
+      ],
+      "repository" : {
+         "url" : "http://github.com/chorny/Github-Fork-Parent"
+      }
+   },
+   "version" : "0.11"
+}

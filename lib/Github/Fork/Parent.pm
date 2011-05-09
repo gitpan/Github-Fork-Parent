@@ -10,23 +10,17 @@ Github::Fork::Parent - Perl module to determine which repository stands in a roo
 
 =head1 VERSION
 
-Version 0.10
+Version 0.11
 
 =cut
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-    use Github::Fork::Parent;
-
-    my $foo = Github::Fork::Parent->new();
-    ...
+my $parent_url = github_parent('git://github.com/chorny/cgi-session.git');
+#returns https://github.com/cromedome/cgi-session
 
 =head1 FUNCTIONS
 
@@ -51,6 +45,7 @@ sub get_network_data {
   my $url = "http://github.com/api/v2/yaml/repos/show/$author/$project/network";
 
   my $ua=LWP::UserAgent->new();
+  $ua->timeout(50);
   my $response = $ua->get($url);
   if ($response->is_success) {
     my $yaml = $response->content();
@@ -66,7 +61,7 @@ sub get_network_data {
 
 sub parse_github_links {
   my $link=shift;
-  if ($link=~m#^(?:\Qgit://github.com/\E|git\@github\.com:\E|\Qhttp://github.com/\E)([^/]+)/([^/]+).git$#) {
+  if ($link=~m#^(?:\Qgit://github.com/\E|git\@github\.com:\E|https?://github\.com/)([^/]+)/([^/.]+)(?:\.git)?$#) {
     return ($1,$2);
   } else {
     return (undef,undef);
@@ -127,9 +122,6 @@ Please report any bugs or feature requests to C<bug-github-fork-parent at rt.cpa
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Github-Fork-Parent>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
-
-
-
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
@@ -169,7 +161,7 @@ Net::GitHub
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2009 Alexandr Ciornii.
+Copyright 2009-2011 Alexandr Ciornii.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published

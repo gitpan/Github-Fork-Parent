@@ -5,9 +5,8 @@ author:
 build_requires:
   LWP::Online: 1.06
   Test::More: 0
-configure_requires:
-  Module::Build: 0.36
-generated_by: 'Module::Build version 0.3601'
+dynamic_config: 1
+generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.110440'
 keywords:
   - github
   - repository
@@ -20,7 +19,7 @@ name: Github-Fork-Parent
 provides:
   Github::Fork::Parent:
     file: lib/Github/Fork/Parent.pm
-    version: 0.10
+    version: 0.11
 requires:
   Exporter: 5.57
   LWP::UserAgent: 0
@@ -29,4 +28,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: http://github.com/chorny/Github-Fork-Parent
-version: 0.10
+version: 0.11
