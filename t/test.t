@@ -3,8 +3,8 @@
 use 5.006;
 use strict;
 use warnings;
-use Test::More tests => 4;
 use LWP::Online ':skip_all';
+use Test::More tests => 4;
 use Github::Fork::Parent;
 
 is(github_parent('git://github.com/chorny/cgi-session.git'),
@@ -20,4 +20,4 @@ my @l=Github::Fork::Parent::parse_github_links('https://github.com/schwern/test-
 is($l[0], 'schwern','parse_github_links');
 
 
-# (c) Alexandr Ciornii, 2009-2010
+# (c) Alexandr Ciornii, 2009-2012
