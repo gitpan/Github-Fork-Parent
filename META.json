@@ -4,7 +4,7 @@
       "Alexandr Ciornii <alexchorny@gmail.com>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4, CPAN::Meta::Converter version 2.112150",
+   "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.112150",
    "keywords" : [
       "github",
       "repository",
@@ -38,7 +38,7 @@
    "provides" : {
       "Github::Fork::Parent" : {
          "file" : "lib/Github/Fork/Parent.pm",
-         "version" : "0.20"
+         "version" : "0.21"
       }
    },
    "release_status" : "stable",
@@ -50,5 +50,5 @@
          "url" : "http://github.com/chorny/Github-Fork-Parent"
       }
    },
-   "version" : "0.20"
+   "version" : "0.21"
 }
