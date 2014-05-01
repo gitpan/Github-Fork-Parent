@@ -4,7 +4,7 @@
       "Alexandr Ciornii <alexchorny@gmail.com>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.112150",
+   "generated_by" : "Module::Build version 0.4007, CPAN::Meta::Converter version 2.131490",
    "keywords" : [
       "github",
       "repository",
@@ -22,15 +22,15 @@
       "build" : {
          "requires" : {
             "LWP::Online" : "1.06",
-            "Test::More" : 0
+            "Test::More" : "0"
          }
       },
       "runtime" : {
          "requires" : {
             "Exporter" : "5.57",
-            "JSON" : 0,
-            "LWP::Protocol::https" : 0,
-            "LWP::UserAgent" : 0,
+            "JSON" : "0",
+            "LWP::Protocol::https" : "0",
+            "LWP::UserAgent" : "0",
             "perl" : "5.006"
          }
       }
@@ -38,7 +38,7 @@
    "provides" : {
       "Github::Fork::Parent" : {
          "file" : "lib/Github/Fork/Parent.pm",
-         "version" : "0.21"
+         "version" : "0.22"
       }
    },
    "release_status" : "stable",
@@ -50,5 +50,5 @@
          "url" : "http://github.com/chorny/Github-Fork-Parent"
       }
    },
-   "version" : "0.21"
+   "version" : "0.22"
 }
